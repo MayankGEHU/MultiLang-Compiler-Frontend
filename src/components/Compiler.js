@@ -18,7 +18,7 @@ const Compiler = () => {
     };
 
     try {
-      const { data } = await axios.post("multi-lang-compiler-backend-f5fdkbvex.vercel.app/run", payLoad);
+      const { data } = await axios.post("https://multi-lang-compiler-backend-f5fdkbvex.vercel.app/run", payLoad);
       setOutput(data.output);
     } catch (err) {
       console.log(err.response);
