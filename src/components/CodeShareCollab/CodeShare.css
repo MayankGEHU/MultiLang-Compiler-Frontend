@@ -1,0 +1,48 @@
+.Codeshare-main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin-top: 127px;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.Codeshare-main-container-glob-container {
+  width: 100%;
+  max-width: 1000px;
+  height: 130vh;
+}
+
+.button-container-codeshare button{
+  background-color: #ff006e;
+  border: none;
+  color: black;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+
+.main-container-button-control{
+  margin-top: 30px;
+}
+.join-button-for-codeshare button{
+    background-color: #ff006e;
+  border: none;
+  color: black;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.join-button-for-codeshare input {
+  width: 20%;
+  height: 40px;
+  border-radius: 15px;
+  margin-right: 20px;
+}

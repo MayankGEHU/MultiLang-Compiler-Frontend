@@ -1,0 +1,171 @@
+.promo-container {
+    background-color: #0B0C2A;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px; 
+    color: white;
+    padding: 4rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  @media (min-width: 768px) {
+    .promo-container {
+      grid-template-columns: 1fr 1fr;
+      padding: 4rem 5rem;
+    }
+  }
+  
+  .promo-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .promo-heading {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    font-weight: bold;
+  }
+  
+  .highlight {
+    color: #ff006e;
+  }
+  
+  .underscore {
+    color: #66FFFC;
+  }
+  
+  .promo-subtext {
+    color: #CCCCCC;
+    font-size: 1.1rem;
+  }
+  
+  .promo-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .promo-btn {
+    border: 1px solid white;
+    background: transparent;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .promo-btn:hover {
+    background-color: #ff006e;
+    color: #0B0C2A;
+  }
+  
+  .promo-codeblock {
+    background-color: #1B1D3A;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+  }
+  
+  .codeblock-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #2A2C4C;
+    align-items: center;
+  }
+  
+  .codeblock-title {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.9rem;
+  }
+  
+  .codeblock-icons {
+    display: flex;
+    gap: 0.4rem;
+  }
+  
+  .code-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+  }
+  
+  .code-dot.red {
+    background-color: #ff5f56;
+  }
+  
+  .code-dot.yellow {
+    background-color: #ffbd2e;
+  }
+  
+  .code-dot.green {
+    background-color: #27c93f;
+  }
+  
+  .code-snippet {
+    padding: 1.5rem;
+    font-family: monospace;
+    color: #D6DEEB;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    line-height: 1.6;
+  }
+  
+  .code-func {
+    color: #32CD32;
+  }
+  
+  .deploy-button {
+    background-color: #ff006e;
+    color: #0B0C2A;
+    text-align: center;
+    padding: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .deploy-button:hover {
+    background-color: #f07aad;
+  }
+
+.code-keyword {
+    color: #ff006e; 
+  }
+  
+  .code-func {
+    color: #82aaff; 
+  }
+  
+  .code-string {
+    color: #ecc48d; 
+  }
+  
+  .code-number {
+    color: #f78c6c; 
+  }
+  
+  .code-boolean {
+    color: #ffcb6b;
+  }
+  
+  .code-variable {
+    color: #d6deeb; 
+  }
+  
+  .code-operator {
+    color: #89ddff; 
+  }
+  
+  .code-snippet code span {
+    white-space: pre;
+  }
+  

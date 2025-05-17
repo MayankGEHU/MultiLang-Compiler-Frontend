@@ -1,0 +1,110 @@
+.HeroBoxSecion-main {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .HeroBoxSecion-box {
+    display: flex;
+    background: white;
+    border-radius: 20px;
+    margin-top: -740px;
+    border: 1px solid black;
+    overflow: hidden;
+    width: 90%;
+    max-width: 900px;
+  }
+
+  .sidebar {
+    width: 260px;
+    background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+    padding: 20px;
+    border-right: 1px solid #ddd;
+  }
+  
+  .sidebar-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .sidebar-header .logo {
+    /* height: 40px; */
+    background-color: #00bcd4;
+    border-radius: 50%;
+  }
+  
+  .sidebar-header input {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  .sidebar-menu {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar-menu li {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .sidebar-menu li.active {
+    font-weight: bold;
+    color: #00bcd4;
+  }
+  
+
+  .deploy-log {
+    flex: 1;
+    padding: 30px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .deploy-log h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .log-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    color: #4caf50;
+    font-weight: bold;
+  }
+  
+  .status {
+    width: 12px;
+    height: 12px;
+    background-color: #4caf50;
+    border-radius: 50%;
+  }
+  
+  .terminal {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: auto;
+    font-family: monospace;
+    font-size: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+  
+  .terminal .line-number {
+    display: inline-block;
+    width: 20px;
+    color: #888;
+  }
+  
