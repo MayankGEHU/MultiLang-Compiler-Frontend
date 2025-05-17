@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import Editor from "@monaco-editor/react";
 import "../CodeShareCollab/CodeShare.css";
 
-const socket = io("http://localhost:3001");
+const socket = io("https://multi-lang-compiler-backend.vercel.app/run");
 
 function CodeShare() {
   const [code, setCode] = useState("// Share code with your friends..");
