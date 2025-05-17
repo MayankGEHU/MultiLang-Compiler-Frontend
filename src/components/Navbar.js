@@ -23,7 +23,7 @@ const Navbar = () => {
           </div>
 
           <ul className="navbar-links">
-            <li>In Developement Phase</li>
+            <li>Backend is not Deploy...</li>
           </ul>
 
           <div className="navbar-right">
