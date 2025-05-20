@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 import "./LangSupportSection.css";
 
 function Features() {
@@ -15,14 +16,18 @@ function Features() {
         </div>
 
         <div className="features-bottom">
+          <Link to="/CodeShare" className='feature-card-link'>
           <div className="feature-card">
             <span className="feature-label green">real-time collaboration</span>
-            <h3>Collaborate with your friends</h3>
+            <h3>Collaborate with your friends & debug together</h3>
             <p>
               Code together instantly using Socket.io — share your workspace,
               debug live, and build projects as a team in real time.
+              Pair Programming.
             </p>
           </div>
+          </Link>
+           <Link to="/Compiler" className='feature-card-link'>
           <div className="feature-card">
             <span className="feature-label pink">Multi-language support</span>
             <h3>Write code in your favorite language</h3>
@@ -32,6 +37,7 @@ function Features() {
               one powerful editor.
             </p>
           </div>
+          </Link>
           <div className="feature-card">
             <span className="feature-label orange">Smart suggestions</span>
             <h3>Catch errors as you code</h3>

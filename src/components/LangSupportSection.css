@@ -63,7 +63,11 @@
     transition: all 0.3s ease-in-out;
     min-width: 180px;
   }
-  
+  .feature-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
   .lang-icon {
     font-size: 28px;
   }
