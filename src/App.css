@@ -11,7 +11,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 24px;
+      padding: 12px 90px;
   background: #f7f7f7;
   margin-top: 30px;
   border-bottom: 1px solid #ddd;
@@ -100,4 +100,77 @@
 
 .run-button:hover {
   background-color: #e60060;
+}
+
+.tabs {
+  display: flex;
+  align-items: center;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  margin-right: 4px;
+  background-color: #eee;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+.tab.active {
+  background-color: #fff;
+  font-weight: bold;
+  border-bottom: 2px solid #f50057;
+}
+
+.delete-tab {
+  background: none;
+  border: none;
+  margin-left: 6px;
+  cursor: pointer;
+  color: #f50057;
+  font-size: 14px;
+}
+
+.add-tab {
+  margin-left: 10px;
+  background-color: #f50057;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.rename-input {
+  width: 100px;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 2px 5px;
+}
+.delete-lottie {
+  margin-left: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.add-lottie {
+margin-left: -25px;
+    cursor: pointer;
+    margin-top: -26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.run-lottie {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
 }
