@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Editor from "@monaco-editor/react";
 import "../App.css";
@@ -17,6 +17,17 @@ const Compiler = () => {
   const [output, setOutput] = useState("");
   const [stdin, setStdin] = useState("");
   const [editingIndex, setEditingIndex] = useState(null);
+  const [isFullScreen, setIsFullScreen] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape" && isFullScreen) {
+        setIsFullScreen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isFullScreen]);
 
   const generateUniqueName = (baseName, extension) => {
     let count = 1;
@@ -79,7 +90,12 @@ const Compiler = () => {
         code,
         input: stdin
       });
-      setOutput(data.output);
+
+      if (data.error) {
+        setOutput(`❌ ${data.type?.toUpperCase() || "ERROR"}:\n${data.message}`);
+      } else {
+        setOutput(data.output || "No output returned.");
+      }
     } catch (err) {
       console.error(err);
       setOutput("An error occurred. Please check your code or server.");
@@ -98,11 +114,14 @@ const Compiler = () => {
     setEditingIndex(null);
   };
 
+  const toggleFullScreen = () => {
+    setIsFullScreen((prev) => !prev);
+  };
+
   const activeFile = files[activeIndex];
 
   return (
     <div className="compiler-main">
-      {/* Top Bar */}
       <div className="compiler-topbar">
         <div className="tabs">
           {files.map((file, index) => (
@@ -129,30 +148,28 @@ const Compiler = () => {
                   {file.name}
                 </span>
               )}
-<div
-  className="delete-lottie"
-  onClick={() => handleDeleteFile(index)}
-  title="Delete File"
->
-  <DotLottieReact
-    src="https://lottie.host/2eb521c4-4210-4675-bec1-c6f787012c2c/pNN7Bssrrb.lottie"
-    autoplay
-    loop
-    style={{ width: "24px", height: "24px" }}
-  />
-</div>
-
+              <div
+                className="delete-lottie"
+                onClick={() => handleDeleteFile(index)}
+                title="Delete File"
+              >
+                <DotLottieReact
+                  src="https://lottie.host/2eb521c4-4210-4675-bec1-c6f787012c2c/pNN7Bssrrb.lottie"
+                  autoplay
+                  loop
+                  style={{ width: "24px", height: "24px" }}
+                />
+              </div>
             </div>
           ))}
-<div className="add-lottie" onClick={handleAddFile} title="Add File">
-  <DotLottieReact
-    src="https://lottie.host/6d9450ee-92e4-4944-9d57-26061c183209/whN6mWtI3a.lottie"
-    autoplay
-    loop
-    style={{ width: "82px", height: "82px" }}
-  />
-</div>
-
+          <div className="add-lottie" onClick={handleAddFile} title="Add File">
+            <DotLottieReact
+              src="https://lottie.host/6d9450ee-92e4-4944-9d57-26061c183209/whN6mWtI3a.lottie"
+              autoplay
+              loop
+              style={{ width: "82px", height: "82px" }}
+            />
+          </div>
         </div>
 
         <span className="title">
@@ -167,14 +184,24 @@ const Compiler = () => {
           <button className="run-button" onClick={handleRun}>
             RUN ▶
           </button>
+          <button className="fullscreen-button" onClick={toggleFullScreen}>
+            {isFullScreen ? "Exit Fullscreen ⛶" : "Fullscreen ⛶"}
+          </button>
         </div>
       </div>
 
-      {/* Editor & I/O */}
       <div className="compiler-body">
-        <div className="editor-container">
+        <div className={`editor-container ${isFullScreen ? "fullscreen" : ""}`}>
+          {isFullScreen && (
+            <button
+              className="exit-fullscreen-btn"
+              onClick={() => setIsFullScreen(false)}
+            >
+              Exit Fullscreen ⛶
+            </button>
+          )}
           <Editor
-            height="500px"
+            height={isFullScreen ? "100vh" : "500px"}
             defaultLanguage={activeFile.language}
             value={activeFile.code}
             theme="vs-dark"
@@ -182,28 +209,28 @@ const Compiler = () => {
           />
         </div>
 
-        <div className="io-section">
-          <div className="input-box">
-            <h4>STDIN</h4>
-            <input
-              placeholder="Input for the program (Optional)"
-              value={stdin}
-              onChange={(e) => setStdin(e.target.value)}
-            />
+        {!isFullScreen && (
+          <div className="io-section">
+            <div className="input-box">
+              <h4>STDIN</h4>
+              <input
+                placeholder="Input for the program (Optional)"
+                value={stdin}
+                onChange={(e) => setStdin(e.target.value)}
+              />
+            </div>
+            <div className="output-box">
+              <h4>Output:</h4>
+              <pre>{output || "Click on RUN button to see the output"}</pre>
+            </div>
           </div>
-          <div className="output-box">
-            <h4>Output:</h4>
-            <pre>{output || "Click on RUN button to see the output"}</pre>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
 };
 
 export default Compiler;
-
-
 
 
 

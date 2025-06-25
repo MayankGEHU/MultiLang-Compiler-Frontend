@@ -167,10 +167,40 @@ margin-left: -25px;
 }
 
 
-.run-lottie {
+.editor-container.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  background: #1e1e1e;
+}
+
+.exit-fullscreen-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10000;
+  background: #282c34;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+}
+
+.fullscreen-button {
   margin-left: 10px;
+  padding: 6px 10px;
+  background-color: #282c34;
+  border: 1px solid #555;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.fullscreen-button:hover,
+.exit-fullscreen-btn:hover {
+  background-color: #3c4049;
 }
