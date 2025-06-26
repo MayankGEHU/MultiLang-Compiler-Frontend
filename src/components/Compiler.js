@@ -5,8 +5,8 @@ import "../App.css";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const DEFAULT_TEMPLATES = {
-  cpp: `#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    cout << "Hello, World!";\n    return 0;\n}`,
-  c: `#include <stdio.h>\n\nint main() {\n    printf("Hello, World!\\n");\n    return 0;\n}`
+  cpp: `#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    cout << \"Hello, World!\";\n    return 0;\n}`,
+  c: `#include <stdio.h>\n\nint main() {\n    printf(\"Hello, World!\\n\");\n    return 0;\n}`
 };
 
 const Compiler = () => {
@@ -18,6 +18,11 @@ const Compiler = () => {
   const [stdin, setStdin] = useState("");
   const [editingIndex, setEditingIndex] = useState(null);
   const [isFullScreen, setIsFullScreen] = useState(false);
+
+  const [showAI, setShowAI] = useState(false);
+  const [aiPrompt, setAIPrompt] = useState("");
+  const [aiCode, setAICode] = useState("");
+  const [loadingAI, setLoadingAI] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -177,6 +182,9 @@ const Compiler = () => {
         </span>
 
         <div className="controls">
+          <button className="ai-code-button" onClick={() => setShowAI(true)}>
+            Code with AI 🤖
+          </button>
           <select value={activeFile.language} onChange={handleLanguageChange}>
             <option value="cpp">C++</option>
             <option value="c">C</option>
@@ -219,7 +227,7 @@ const Compiler = () => {
                 onChange={(e) => setStdin(e.target.value)}
                 rows={6}
                 style={{
-                  width: "100%",
+                  width: "97%",
                   resize: "vertical",
                   fontFamily: "monospace",
                   fontSize: "14px",
@@ -235,12 +243,56 @@ const Compiler = () => {
           </div>
         )}
       </div>
+
+      {showAI && (
+        <div className="ai-modal">
+          <div className="ai-modal-content">
+            <h2>Code with AI</h2>
+            <textarea
+              rows={4}
+              placeholder="Describe the code you want..."
+              value={aiPrompt}
+              onChange={(e) => setAIPrompt(e.target.value)}
+            />
+            <button
+              className="generate-btn"
+              onClick={async () => {
+                setLoadingAI(true);
+                try {
+                  const res = await axios.post("http://localhost:5000/ai-generate", {
+                    prompt: aiPrompt,
+                    language: activeFile.language,
+                  });
+                  setAICode(res.data.code);
+                } catch (e) {
+                  setAICode("// Failed to fetch code from AI.");
+                } finally {
+                  setLoadingAI(false);
+                }
+              }}
+              disabled={loadingAI || !aiPrompt}
+            >
+              {loadingAI ? "Generating..." : "Generate Code"}
+            </button>
+            <pre className="ai-output">{aiCode || "// AI will write code here..."}</pre>
+            <button
+              className="copy-btn"
+              onClick={() => navigator.clipboard.writeText(aiCode)}
+              disabled={!aiCode}
+            >
+              Copy Code
+            </button>
+            <button className="close-btn" onClick={() => setShowAI(false)}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default Compiler;
-
 
 
 
