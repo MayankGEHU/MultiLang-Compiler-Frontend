@@ -8,10 +8,12 @@ import Compiler from "./components/Compiler";
 import CodeShare from "./components/CodeShareCollab/CodeShare";
 import Footer  from "./components/Footer";
 import Features from "./components/Features";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <Router>
+       <ScrollToTop />
       <Navbar />
       <Routes>
         <Route

@@ -213,10 +213,19 @@ const Compiler = () => {
           <div className="io-section">
             <div className="input-box">
               <h4>STDIN</h4>
-              <input
-                placeholder="Input for the program (Optional)"
+              <textarea
+                placeholder="Enter input (multiline supported)"
                 value={stdin}
                 onChange={(e) => setStdin(e.target.value)}
+                rows={6}
+                style={{
+                  width: "100%",
+                  resize: "vertical",
+                  fontFamily: "monospace",
+                  fontSize: "14px",
+                  padding: "8px",
+                  borderRadius: "6px",
+                }}
               />
             </div>
             <div className="output-box">
@@ -231,6 +240,7 @@ const Compiler = () => {
 };
 
 export default Compiler;
+
 
 
 

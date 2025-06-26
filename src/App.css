@@ -191,8 +191,8 @@ margin-left: -25px;
 }
 
 .fullscreen-button {
-  margin-left: 10px;
-  padding: 6px 10px;
+  margin-left: 1px;
+  padding: 8px 9px;
   background-color: #282c34;
   border: 1px solid #555;
   color: #fff;
@@ -203,4 +203,10 @@ margin-left: -25px;
 .fullscreen-button:hover,
 .exit-fullscreen-btn:hover {
   background-color: #3c4049;
+}
+
+
+.controls select{
+      padding: 10px 16px;
+    border-radius: 8px;
 }
